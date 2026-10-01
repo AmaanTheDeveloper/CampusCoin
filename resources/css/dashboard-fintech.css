@@ -1,0 +1,2792 @@
+/* CampusCoin authenticated app — premium dark fintech system */
+
+html.cc-fintech-root {
+    --background: #030303;
+    --foreground: #f3f3f3;
+    --card: #0a0a0a;
+    --card-foreground: #f3f3f3;
+    --popover: #101010;
+    --popover-foreground: #f3f3f3;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --secondary: #151515;
+    --secondary-foreground: #f3f3f3;
+    --muted: #151515;
+    --muted-foreground: #a8a8a8;
+    --accent: #1b1b1b;
+    --accent-foreground: #f3f3f3;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.1);
+    --ring: #d14508;
+    --chart-1: #d14508;
+    --chart-2: #ff7a3d;
+    --chart-3: #b8b8b8;
+    --chart-4: #5c5c5c;
+    --chart-5: #242424;
+    --sidebar-background: #070707;
+    --sidebar-foreground: #cfcfcf;
+    --sidebar-primary: #d14508;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: rgba(209, 69, 8, 0.12);
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.07);
+    --sidebar-ring: #d14508;
+    --radius: 0.85rem;
+    --cc-orange: #d14508;
+    --cc-orange-soft: rgba(209, 69, 8, 0.18);
+    --cc-surface: rgba(255, 255, 255, 0.035);
+    --cc-surface-elevated: rgba(255, 255, 255, 0.055);
+    --cc-glow: rgba(209, 69, 8, 0.22);
+    --cc-input-icon: #d4d4d4;
+    --cc-icon: #e5e5e5;
+    color-scheme: dark;
+}
+
+html.cc-fintech-root body {
+    background: #030303;
+    color: #f3f3f3;
+}
+
+.cc-fintech {
+    --background: #030303;
+    --foreground: #f3f3f3;
+    --card: #0a0a0a;
+    --card-foreground: #f3f3f3;
+    --popover: #101010;
+    --popover-foreground: #f3f3f3;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --secondary: #151515;
+    --secondary-foreground: #f3f3f3;
+    --muted: #151515;
+    --muted-foreground: #a8a8a8;
+    --accent: #1b1b1b;
+    --accent-foreground: #f3f3f3;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.1);
+    --ring: #e94f09;
+    --chart-1: #e94f09;
+    --chart-2: #ff7a3d;
+    --chart-3: #b8b8b8;
+    --chart-4: #5c5c5c;
+    --chart-5: #242424;
+    --cc-orange: #e94f09;
+    --cc-orange-soft: rgba(233, 79, 9, 0.18);
+    --cc-surface: rgba(255, 255, 255, 0.035);
+    --cc-surface-elevated: rgba(255, 255, 255, 0.055);
+    --cc-glow: rgba(233, 79, 9, 0.22);
+    --cc-input-icon: #d4d4d4;
+    --cc-icon: #e5e5e5;
+    color: var(--foreground);
+    background: #030303;
+    isolation: isolate;
+    position: relative;
+}
+
+/* —— Atmosphere —— */
+.cc-fintech-atmosphere {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.cc-fintech-atmosphere::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 40%;
+    top: -14%;
+    right: -10%;
+    background: radial-gradient(ellipse at center, rgba(233, 79, 9, 0.07), transparent 72%);
+    /* Static atmosphere — avoid continuous background motion */
+    animation: none;
+}
+
+.cc-fintech-atmosphere::after {
+    content: '';
+    position: absolute;
+    width: 36%;
+    height: 30%;
+    bottom: 10%;
+    left: -8%;
+    background: radial-gradient(ellipse at center, rgba(233, 79, 9, 0.04), transparent 72%);
+    animation: none;
+}
+
+.cc-fintech-grain {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+.cc-fintech-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* —— Shell / sidebar —— */
+html.cc-fintech-root [data-slot='sidebar-inset'],
+html.cc-fintech-root .bg-background,
+html.cc-fintech-root [data-sidebar='inset'] {
+    background-color: #030303;
+    min-width: 0;
+}
+
+html.cc-fintech-root .group\/sidebar-wrapper {
+    background: #030303;
+}
+
+html.cc-fintech-root [data-sidebar='sidebar'] {
+    background: linear-gradient(180deg, #0a0a0a 0%, #070707 100%);
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.35);
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'] {
+    transition:
+        background-color 220ms ease,
+        color 220ms ease,
+        transform 220ms ease,
+        box-shadow 220ms ease;
+}
+
+/* Secondary nav: quieter than primary, never reads as disabled (CC-UX-001 / CC-UX-004) */
+html.cc-fintech-root [data-sidebar='menu-button'].cc-nav-secondary {
+    color: #c4c4c4;
+    opacity: 1;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'].cc-nav-secondary svg {
+    color: #b8b8b8;
+    opacity: 1;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'].cc-nav-secondary:hover {
+    color: #ffffff;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'].cc-nav-secondary:hover svg {
+    color: #e94f09;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button'].cc-nav-secondary {
+    color: #525252;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button'].cc-nav-secondary svg {
+    color: #525252;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button'].cc-nav-secondary:hover {
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button'].cc-nav-secondary:hover svg {
+    color: #e94f09;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button']:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button']:hover svg {
+    transform: translateX(1px);
+    color: #e94f09;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'] svg {
+    transition:
+        transform 220ms ease,
+        color 220ms ease;
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'][data-active='true'] {
+    background: linear-gradient(90deg, rgba(233, 79, 9, 0.18), rgba(233, 79, 9, 0.06));
+    color: #fff;
+    box-shadow:
+        inset 3px 0 0 #e94f09,
+        0 0 20px rgba(233, 79, 9, 0.08);
+}
+
+html.cc-fintech-root [data-sidebar='menu-button'][data-active='true'] svg {
+    color: #e94f09;
+}
+
+html.cc-fintech-root [data-sidebar='menu-badge'] {
+    background: rgba(233, 79, 9, 0.2);
+    color: #ffb089;
+}
+
+html.cc-fintech-root header.border-sidebar-border\/50,
+html.cc-fintech-root .cc-app-header {
+    background: rgba(3, 3, 3, 0.72);
+    backdrop-filter: blur(12px);
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* —— Depth / elevation tiers —— */
+.cc-elev-1 {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.cc-elev-2,
+.cc-card-utility {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 1rem;
+    box-shadow: none;
+}
+
+.cc-elev-3,
+.cc-card-hero {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.35rem;
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(233, 79, 9, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* —— Cards —— */
+.cc-card {
+    background: linear-gradient(160deg, var(--cc-surface-elevated), var(--cc-surface));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transform-style: preserve-3d;
+    transition:
+        transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 220ms ease,
+        box-shadow 280ms ease;
+}
+
+.cc-card:hover {
+    border-color: rgba(233, 79, 9, 0.28);
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(233, 79, 9, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cc-card-interactive:hover {
+    transform: translateY(-3px) translateZ(6px) rotateX(0.4deg) rotateY(-0.4deg);
+}
+
+.cc-card-utility:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    transform: none;
+}
+
+html.cc-fintech-root .border-border.bg-card,
+html.cc-fintech-root .bg-card.rounded-xl,
+html.cc-fintech-root .bg-card.rounded-lg {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html.cc-fintech-root .shadow-sm {
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* —— Buttons —— */
+html.cc-fintech-root button,
+html.cc-fintech-root [role='button'],
+html.cc-fintech-root a[class*='inline-flex'] {
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease,
+        color 200ms ease;
+}
+
+html.cc-fintech-root .bg-primary {
+    box-shadow: 0 0 0 0 rgba(233, 79, 9, 0);
+}
+
+html.cc-fintech-root .bg-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(233, 79, 9, 0.35);
+}
+
+html.cc-fintech-root .bg-primary:active {
+    transform: translateY(0);
+}
+
+html.cc-fintech-root .border-input:hover,
+html.cc-fintech-root button.border:hover {
+    border-color: rgba(233, 79, 9, 0.4);
+}
+
+/* —— Forms —— */
+html.cc-fintech-root input,
+html.cc-fintech-root textarea,
+html.cc-fintech-root select {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f3f3f3;
+    transition:
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease;
+}
+
+html.cc-fintech-root input::placeholder,
+html.cc-fintech-root textarea::placeholder {
+    color: #737373;
+}
+
+html.cc-fintech-root input:focus-visible,
+html.cc-fintech-root textarea:focus-visible,
+html.cc-fintech-root select:focus-visible {
+    border-color: rgba(233, 79, 9, 0.65);
+    box-shadow: 0 0 0 3px rgba(233, 79, 9, 0.2);
+    outline: none;
+}
+
+/* —— Dialogs / sheets —— */
+html.cc-fintech-root [role='dialog'],
+html.cc-fintech-root [data-radix-dialog-content],
+html.cc-fintech-root [data-state][class*='bg-background'] {
+    background: #0a0a0a;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 24px 64px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(233, 79, 9, 0.08);
+}
+
+/* —— Tables / rows —— */
+html.cc-fintech-root table thead {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+html.cc-fintech-root tbody tr {
+    transition: background-color 180ms ease;
+}
+
+html.cc-fintech-root tbody tr:hover {
+    background: rgba(233, 79, 9, 0.06);
+}
+
+.cc-row {
+    transition:
+        transform 200ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease;
+}
+
+.cc-row:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(233, 79, 9, 0.25);
+}
+
+/* —— Page motion —— */
+.cc-page-enter {
+    animation: cc-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-stagger > * {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    animation: cc-enter 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.cc-stagger > *:nth-child(1) {
+    animation-delay: 80ms;
+}
+.cc-stagger > *:nth-child(2) {
+    animation-delay: 140ms;
+}
+.cc-stagger > *:nth-child(3) {
+    animation-delay: 200ms;
+}
+.cc-stagger > *:nth-child(4) {
+    animation-delay: 260ms;
+}
+.cc-stagger > *:nth-child(5) {
+    animation-delay: 320ms;
+}
+.cc-stagger > *:nth-child(6) {
+    animation-delay: 380ms;
+}
+.cc-stagger > *:nth-child(7) {
+    animation-delay: 440ms;
+}
+.cc-stagger > *:nth-child(8) {
+    animation-delay: 500ms;
+}
+.cc-stagger > *:nth-child(9) {
+    animation-delay: 560ms;
+}
+.cc-stagger > *:nth-child(10) {
+    animation-delay: 620ms;
+}
+.cc-stagger > *:nth-child(11) {
+    animation-delay: 680ms;
+}
+.cc-stagger > *:nth-child(12) {
+    animation-delay: 740ms;
+}
+
+.cc-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #a8a8a8;
+    font-weight: 500;
+}
+
+.cc-text-secondary {
+    color: #b0b0b0;
+}
+
+.cc-text-tertiary {
+    color: #737373;
+}
+
+/* —— Compact toolbar / fields —— */
+.cc-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cc-field {
+    height: 2.5rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.035);
+    color: #f3f3f3;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+}
+
+.cc-field:focus-visible,
+.cc-field:focus {
+    border-color: rgba(233, 79, 9, 0.65);
+    box-shadow: 0 0 0 3px rgba(233, 79, 9, 0.2);
+    outline: none;
+}
+
+select.cc-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23b8b8b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+}
+
+/* Search field — stable icon box (no flex-shrink collapse / clipping) */
+.cc-search-field {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex: 1 1 12rem;
+    align-items: center;
+}
+
+.cc-search-field__icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    z-index: 1;
+    display: grid;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    place-items: center;
+    pointer-events: none;
+    color: var(--cc-input-icon, #b8b8b8);
+    transform: translateY(-50%);
+}
+
+.cc-search-field__icon svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+.cc-search-field__input {
+    min-width: 0;
+    flex: 1 1 auto;
+    padding-left: 2.5rem !important;
+}
+
+.cc-search-inline {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cc-search-inline__icon {
+    display: grid;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    place-items: center;
+    color: var(--cc-input-icon, #b8b8b8);
+}
+
+.cc-search-inline__icon svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
+select.cc-field option {
+    background: #121212;
+    color: #f3f3f3;
+}
+
+input.cc-field[type='date'],
+input.cc-field[type='month'],
+input.cc-field[type='datetime-local'] {
+    color-scheme: dark;
+}
+
+.cc-fintech-root input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not([type='file']):not([type='range']),
+.cc-fintech-root select,
+.cc-fintech-root textarea {
+    border-radius: 0.7rem;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.035);
+    color: #f3f3f3;
+}
+
+.cc-fintech-root input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not([type='file']):not([type='range']):focus-visible,
+.cc-fintech-root select:focus-visible,
+.cc-fintech-root textarea:focus-visible {
+    border-color: rgba(233, 79, 9, 0.65);
+    box-shadow: 0 0 0 3px rgba(233, 79, 9, 0.2);
+    outline: none;
+}
+
+.cc-fintech-root input[type='date'],
+.cc-fintech-root input[type='month'],
+.cc-fintech-root input[type='datetime-local'] {
+    color-scheme: dark;
+}
+
+.cc-table-shell {
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cc-table-shell table {
+    width: 100%;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.cc-table-shell thead {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cc-table-shell th {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: #b0b0b0;
+}
+
+.cc-table-shell td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e8e8e8;
+}
+
+.cc-table-shell tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.cc-table-shell tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+/* —— Form system —— */
+.cc-form-shell {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 1.15rem;
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.cc-form-field label,
+.cc-fintech-root .cc-form-shell label {
+    color: #cfcfcf;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.cc-form-field .cc-text-secondary,
+.cc-form-shell .text-muted-foreground,
+.cc-form-shell p.text-xs {
+    color: #a8a8a8;
+}
+
+.cc-form-actions {
+    gap: 0.5rem;
+}
+
+.cc-fintech-root .cc-form-shell input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not([type='file']),
+.cc-fintech-root .cc-form-shell select,
+.cc-fintech-root .cc-form-shell textarea,
+.cc-fintech-root select.cc-field,
+.cc-fintech-root input.cc-field {
+    height: 2.5rem;
+    min-height: 2.5rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #f3f3f3;
+    font-size: 0.875rem;
+    padding: 0 0.75rem;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background-color 160ms ease;
+}
+
+.cc-fintech-root .cc-form-shell textarea {
+    height: auto;
+    min-height: 5rem;
+    padding: 0.65rem 0.75rem;
+}
+
+.cc-fintech-root .cc-form-shell input:disabled,
+.cc-fintech-root .cc-form-shell select:disabled,
+.cc-fintech-root .cc-form-shell textarea:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.cc-fintech-root .cc-form-shell input[aria-invalid='true'],
+.cc-fintech-root .cc-form-shell select[aria-invalid='true'],
+.cc-fintech-root .cc-form-shell textarea[aria-invalid='true'] {
+    border-color: rgba(248, 113, 113, 0.55);
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
+}
+
+.cc-fintech-root select,
+.cc-fintech-root select.cc-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23a8a8a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-color: rgba(255, 255, 255, 0.04);
+    padding-right: 2rem;
+}
+
+.cc-fintech-root select option,
+.cc-fintech-root select optgroup {
+    background: #121212;
+    color: #f3f3f3;
+}
+
+.cc-fintech-root input[type='date'],
+.cc-fintech-root input[type='month'],
+.cc-fintech-root input[type='datetime-local'],
+.cc-fintech-root input.cc-field[type='date'],
+.cc-fintech-root input.cc-field[type='month'] {
+    color-scheme: dark;
+    min-width: 0;
+}
+
+/* Native calendar glyph: color-scheme:dark already yields a light indicator.
+   invert() was darkening it against #030303 — remove filter, keep opacity readable. */
+.cc-fintech-root input[type='date']::-webkit-calendar-picker-indicator,
+.cc-fintech-root input[type='month']::-webkit-calendar-picker-indicator {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    opacity: 0.95;
+    /* With color-scheme:dark the native glyph is light; invert() made it nearly invisible. */
+    filter: none;
+}
+
+.cc-fintech-root .text-red-600,
+.cc-fintech-root .dark\:text-red-400,
+.cc-fintech-root p.text-sm.text-red-600 {
+    color: #fca5a5 !important;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    margin-top: 0.15rem;
+}
+
+/* Elevation: utility stays flat; primary modest; hero layered */
+.cc-card-utility {
+    transform: none !important;
+}
+
+.cc-card-hero {
+    position: relative;
+}
+
+.cc-card-hero::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(ellipse 70% 55% at 20% 0%, rgba(233, 79, 9, 0.12), transparent 55%);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+.cc-card-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cc-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #cfcfcf;
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease;
+}
+
+.cc-icon-btn:hover {
+    background: rgba(233, 79, 9, 0.12);
+    border-color: rgba(233, 79, 9, 0.35);
+    color: #fff;
+}
+
+.cc-tx-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border-radius: 0.9rem;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.02);
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.cc-tx-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(233, 79, 9, 0.2);
+    transform: translateY(-1px);
+}
+
+.cc-cta-arrow {
+    display: inline-block;
+    transition: transform 220ms ease;
+}
+
+.group:hover .cc-cta-arrow {
+    transform: translateX(4px);
+}
+
+.cc-progress-track {
+    position: relative;
+    height: 0.55rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.cc-progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #c43f07, #e94f09 55%, #ff7a3d);
+    box-shadow: 0 0 12px rgba(233, 79, 9, 0.35);
+    transform-origin: left center;
+    animation: cc-fill-in 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.cc-progress-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transform: translateX(-120%);
+    animation: none;
+}
+
+.cc-hero-loop .cc-progress-shine {
+    animation: cc-shine 3.6s ease-in-out infinite;
+}
+
+.cc-skeleton {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(233, 79, 9, 0.08), rgba(255, 255, 255, 0.04));
+    background-size: 200% 100%;
+    animation: cc-shimmer 1.6s ease-in-out infinite;
+    border-radius: var(--radius);
+}
+
+html:not(.dark) .cc-skeleton,
+html.cc-fintech-root:not(.dark) .cc-skeleton {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.04), rgba(233, 79, 9, 0.1), rgba(0, 0, 0, 0.04));
+    background-size: 200% 100%;
+}
+
+@keyframes cc-enter {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cc-glow-drift {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(-3%, 4%, 0) scale(1.05);
+    }
+}
+
+@keyframes cc-fill-in {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes cc-shine {
+    0%,
+    35% {
+        transform: translateX(-120%);
+    }
+    65%,
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+@keyframes cc-shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes cc-pulse-ring {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.92);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes cc-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cc-signal {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.55);
+    }
+    70% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+}
+
+@keyframes cc-draw-glow {
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cc-path-draw {
+    0% {
+        stroke-dashoffset: 140;
+        opacity: 0.4;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes cc-path-draw-loop {
+    0% {
+        stroke-dashoffset: 140;
+        opacity: 0.4;
+    }
+    45% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    70% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 140;
+        opacity: 0.4;
+    }
+}
+
+/* Loops only run inside hero modules — keeps concurrent animations low */
+.cc-svg-pulse,
+.cc-svg-orbit,
+.cc-svg-signal,
+.cc-svg-glow,
+.cc-svg-path-draw {
+    animation: none;
+}
+
+.cc-svg-path-draw {
+    stroke-dashoffset: 0;
+    opacity: 1;
+}
+
+.cc-hero-loop .cc-svg-pulse {
+    transform-origin: center;
+    animation: cc-pulse-ring 3.2s ease-in-out infinite;
+}
+
+.cc-hero-loop .cc-svg-orbit {
+    transform-origin: center;
+    animation: cc-orbit 8s linear infinite;
+}
+
+.cc-hero-loop .cc-svg-signal {
+    transform-origin: center;
+    animation: cc-signal 2.8s ease-out infinite;
+}
+
+.cc-hero-loop .cc-svg-glow {
+    animation: cc-draw-glow 3.5s ease-in-out infinite;
+}
+
+/* Forecast path draws once; endpoint glow/pulse continues via hero loop */
+.cc-hero-loop .cc-svg-path-draw {
+    stroke-dashoffset: 140;
+    animation: cc-path-draw 1.35s ease-out forwards;
+}
+
+/* Calm secondary signal loop (Spending Alert) — not a hero module */
+.cc-soft-loop .cc-svg-signal {
+    transform-origin: center;
+    animation: cc-signal 3.6s ease-out infinite;
+}
+
+/* —— Shared dash button system (promoted from dashboard-only) —— */
+.cc-dash-btn-primary {
+    background: #d14508 !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 22px rgba(209, 69, 8, 0.28);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease,
+        background-color 180ms ease;
+}
+
+.cc-dash-btn-primary:hover {
+    background: #e05210 !important;
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(209, 69, 8, 0.4);
+}
+
+.cc-dash-btn-primary:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 14px rgba(209, 69, 8, 0.28);
+}
+
+.cc-dash-btn-primary:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(209, 69, 8, 0.35),
+        0 8px 22px rgba(209, 69, 8, 0.28);
+}
+
+.cc-dash-btn-secondary {
+    background: #101010 !important;
+    color: #e8e8e8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.cc-dash-btn-secondary:hover {
+    background: #151515 !important;
+    border-color: rgba(233, 79, 9, 0.45) !important;
+    transform: translateY(-1px);
+}
+
+.cc-dash-btn-secondary:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.cc-dash-btn-ghost {
+    background: transparent !important;
+    color: #b8b8b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.cc-dash-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(233, 79, 9, 0.35) !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+.cc-dash-btn-ghost:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Light theme: theme-aware ghost/secondary hierarchy */
+html:not(.dark) .cc-dash-btn-primary,
+html.cc-fintech-root:not(.dark) .cc-dash-btn-primary {
+    box-shadow: 0 8px 22px rgba(233, 79, 9, 0.28);
+}
+
+html:not(.dark) .cc-dash-btn-secondary,
+html.cc-fintech-root:not(.dark) .cc-dash-btn-secondary {
+    background: #ebe9e6 !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+html:not(.dark) .cc-dash-btn-secondary:hover,
+html.cc-fintech-root:not(.dark) .cc-dash-btn-secondary:hover {
+    background: #e2dfdb !important;
+    border-color: rgba(233, 79, 9, 0.4) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) .cc-dash-btn-ghost,
+html.cc-fintech-root:not(.dark) .cc-dash-btn-ghost {
+    background: transparent !important;
+    color: #404040 !important;
+    border: 1px solid rgba(0, 0, 0, 0.16) !important;
+}
+
+html:not(.dark) .cc-dash-btn-ghost:hover,
+html.cc-fintech-root:not(.dark) .cc-dash-btn-ghost:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(233, 79, 9, 0.4) !important;
+    color: #141414 !important;
+}
+
+.cc-dash-link {
+    color: #e94f09;
+    transition: color 160ms ease;
+}
+
+.cc-dash-link:hover {
+    color: #ff7a3d;
+}
+
+.cc-dash-link:hover .cc-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* —— Dashboard presentation polish (metrics / cards remain scoped) —— */
+.cc-dashboard .cc-dash-link {
+    color: #e94f09;
+    transition: color 160ms ease;
+}
+
+.cc-dashboard .cc-dash-link:hover {
+    color: #ff7a3d;
+}
+
+.cc-dashboard .cc-dash-link:hover .cc-cta-arrow {
+    transform: translateX(4px);
+}
+
+.cc-dashboard .group:hover .cc-cta-arrow {
+    transform: translateX(4px);
+}
+
+.cc-dashboard .cc-summary-metric {
+    position: relative;
+    background: #0b0b0b !important;
+}
+
+.cc-dashboard .cc-summary-metric__value {
+    color: #ffffff !important;
+}
+
+.cc-dashboard .cc-summary-metric__value--accent {
+    color: #e94f09 !important;
+}
+
+.cc-dashboard .cc-summary-metric__hint {
+    color: #737373;
+}
+
+.cc-dashboard .cc-summary-underline {
+    display: block;
+    margin-top: 0.85rem;
+    height: 2px;
+    width: 1.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    animation: none !important;
+}
+
+.cc-dashboard .cc-summary-underline--accent {
+    background: linear-gradient(90deg, #e94f09, rgba(233, 79, 9, 0.2));
+    box-shadow: 0 0 10px rgba(233, 79, 9, 0.35);
+}
+
+.cc-dashboard .cc-card-hero {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)), #0e0e0e;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(233, 79, 9, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.cc-dashboard .cc-card {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)), #0b0b0b;
+}
+
+.cc-dashboard .cc-card-utility {
+    background: #080808;
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+
+.cc-dashboard .cc-card-interactive:hover {
+    border-color: rgba(233, 79, 9, 0.28);
+}
+
+.cc-dashboard svg[aria-hidden] {
+    max-width: 100%;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .cc-dashboard svg.size-28 {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
+
+    .cc-dashboard svg.size-24 {
+        width: 4.75rem;
+        height: 4.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-fintech-atmosphere::before,
+    .cc-fintech-atmosphere::after,
+    .cc-stagger > *,
+    .cc-page-enter,
+    .cc-progress-fill,
+    .cc-hero-loop .cc-progress-shine,
+    .cc-hero-loop .cc-svg-pulse,
+    .cc-hero-loop .cc-svg-orbit,
+    .cc-hero-loop .cc-svg-signal,
+    .cc-hero-loop .cc-svg-glow,
+    .cc-hero-loop .cc-svg-path-draw,
+    .cc-soft-loop .cc-svg-signal {
+        animation: none !important;
+    }
+
+    .cc-stagger > *,
+    .cc-page-enter {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-progress-fill {
+        transform: scaleX(1);
+    }
+
+    .cc-svg-path-draw {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    .cc-card-interactive:hover {
+        transform: none;
+    }
+
+    .cc-dash-btn-primary:hover,
+    .cc-dash-btn-secondary:hover,
+    .cc-dash-btn-ghost:hover {
+        transform: none;
+    }
+
+    html.cc-fintech-root .bg-primary:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cc-card-interactive:hover {
+        transform: none;
+    }
+
+    html.cc-fintech-root .bg-primary:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .cc-dash-btn-primary:hover,
+    .cc-dash-btn-secondary:hover {
+        transform: none;
+    }
+
+    .cc-dash-btn-primary {
+        min-height: 2.75rem;
+    }
+}
+
+/* —— Budgets page meter visual —— */
+.cc-budget-visual {
+    transform-origin: center;
+}
+
+.cc-budget-visual__glow {
+    transform-origin: center;
+    animation: cc-budget-glow 3.6s ease-in-out infinite;
+}
+
+.cc-budget-visual__arc {
+    stroke-dasharray: 72 100;
+    stroke-dashoffset: 72;
+    animation: cc-budget-draw 3.6s ease-in-out infinite;
+}
+
+.cc-budget-visual__shine {
+    stroke-dasharray: 18 100;
+    stroke-dashoffset: 100;
+    opacity: 0.85;
+    animation: cc-budget-shine 3.6s ease-in-out infinite;
+}
+
+.cc-budget-visual__needle {
+    animation: cc-budget-needle 3.6s ease-in-out infinite;
+}
+
+@keyframes cc-budget-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+@keyframes cc-budget-draw {
+    0% {
+        stroke-dashoffset: 72;
+        stroke-dasharray: 8 100;
+    }
+    45% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 72 100;
+    }
+    70% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 72 100;
+    }
+    100% {
+        stroke-dashoffset: 72;
+        stroke-dasharray: 8 100;
+    }
+}
+
+@keyframes cc-budget-shine {
+    0% {
+        stroke-dashoffset: 100;
+        opacity: 0.2;
+    }
+    40% {
+        stroke-dashoffset: 20;
+        opacity: 0.95;
+    }
+    70% {
+        stroke-dashoffset: -10;
+        opacity: 0.55;
+    }
+    100% {
+        stroke-dashoffset: -40;
+        opacity: 0.15;
+    }
+}
+
+@keyframes cc-budget-needle {
+    0%,
+    100% {
+        transform: rotate(-38deg);
+    }
+    50% {
+        transform: rotate(32deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-budget-visual__glow,
+    .cc-budget-visual__arc,
+    .cc-budget-visual__shine,
+    .cc-budget-visual__needle {
+        animation: none !important;
+    }
+
+    .cc-budget-visual__glow {
+        opacity: 0.75;
+    }
+
+    .cc-budget-visual__arc {
+        stroke-dasharray: 72 100;
+        stroke-dashoffset: 0;
+    }
+
+    .cc-budget-visual__shine {
+        stroke-dashoffset: 20;
+        opacity: 0.55;
+    }
+
+    .cc-budget-visual__needle {
+        transform: rotate(8deg);
+    }
+}
+
+/* —— Insight star (Monthly Insight + Review My Month) —— */
+.cc-insight-star {
+    transform-origin: center;
+    animation: cc-insight-enter 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    filter: blur(0);
+}
+
+.cc-insight-star__glow {
+    transform-origin: center;
+    animation: cc-insight-breathe 4.2s ease-in-out 650ms infinite;
+}
+
+.cc-insight-star__body {
+    transform-origin: 64px 64px;
+    animation: cc-insight-scale 4.2s ease-in-out 650ms infinite;
+}
+
+.cc-insight-star__shine {
+    transform-origin: 64px 64px;
+    animation: cc-insight-shine 4.8s ease-in-out 800ms infinite;
+}
+
+.cc-insight-star--review {
+    animation-duration: 720ms;
+}
+
+.cc-insight-star--review .cc-insight-star__glow {
+    animation-duration: 4.6s;
+    animation-delay: 720ms;
+}
+
+.cc-insight-star--review .cc-insight-star__body {
+    animation-duration: 4.6s;
+    animation-delay: 720ms;
+}
+
+.group:hover .cc-insight-star-hover {
+    transform: scale(1.025);
+    filter: drop-shadow(0 0 14px rgba(233, 79, 9, 0.45));
+}
+
+.cc-insight-star-hover {
+    display: inline-flex;
+    transform-origin: center;
+    transition:
+        transform 220ms ease,
+        filter 220ms ease;
+}
+
+@keyframes cc-insight-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes cc-insight-breathe {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes cc-insight-scale {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.015);
+    }
+}
+
+@keyframes cc-insight-shine {
+    0%,
+    100% {
+        opacity: 0.72;
+        transform: translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-1.5px, 1.5px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-insight-star,
+    .cc-insight-star__glow,
+    .cc-insight-star__body,
+    .cc-insight-star__shine {
+        animation: none !important;
+    }
+
+    .cc-insight-star {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+
+    .group:hover .cc-insight-star-hover {
+        transform: none;
+        filter: none;
+    }
+}
+
+/* —— Categories page organization visual —— */
+.cc-category-visual {
+    transform-origin: center;
+    animation: cc-category-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-category-visual__glow {
+    transform-origin: center;
+    animation: cc-category-glow 4s ease-in-out 600ms infinite;
+}
+
+.cc-category-visual__front {
+    transform-origin: center;
+    animation: cc-category-pulse 4s ease-in-out 600ms infinite;
+}
+
+.cc-category-visual__pulse {
+    animation: cc-category-line 4s ease-in-out 600ms infinite;
+}
+
+.cc-category-visual__tile {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.cc-category-visual__tile--1 {
+    animation: cc-category-tile-1 4s ease-in-out 600ms infinite;
+}
+
+.cc-category-visual__tile--2 {
+    animation: cc-category-tile-2 4s ease-in-out 750ms infinite;
+}
+
+.cc-category-visual__tile--3 {
+    animation: cc-category-tile-3 4s ease-in-out 900ms infinite;
+}
+
+.cc-category-visual__tile--4 {
+    animation: cc-category-tile-4 4s ease-in-out 700ms infinite;
+}
+
+@keyframes cc-category-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cc-category-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+@keyframes cc-category-pulse {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -0.5px);
+    }
+}
+
+@keyframes cc-category-line {
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@keyframes cc-category-tile-1 {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-1.5px, 1.5px);
+    }
+}
+
+@keyframes cc-category-tile-2 {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-1px, -1px);
+    }
+}
+
+@keyframes cc-category-tile-3 {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(1px, -1.5px);
+    }
+}
+
+@keyframes cc-category-tile-4 {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(1.5px, 1px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-category-visual,
+    .cc-category-visual__glow,
+    .cc-category-visual__front,
+    .cc-category-visual__pulse,
+    .cc-category-visual__tile--1,
+    .cc-category-visual__tile--2,
+    .cc-category-visual__tile--3,
+    .cc-category-visual__tile--4 {
+        animation: none !important;
+    }
+
+    .cc-category-visual {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-category-visual__glow {
+        opacity: 0.75;
+    }
+}
+
+/* —— Recurring transactions calendar-cycle visual —— */
+.cc-recurring-visual {
+    transform-origin: center;
+    animation: cc-recurring-enter 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-recurring-visual__glow {
+    transform-origin: center;
+    animation: cc-recurring-glow 4s ease-in-out 620ms infinite;
+}
+
+.cc-recurring-visual__orbit {
+    transform-origin: 36px 36px;
+    animation: cc-recurring-orbit 4.2s linear 620ms infinite;
+}
+
+.cc-recurring-visual__orbit-ring {
+    transform-origin: 36px 36px;
+    animation: cc-recurring-ring 4.2s linear 620ms infinite;
+}
+
+.cc-recurring-visual__header-shine {
+    animation: cc-recurring-header 4s ease-in-out 620ms infinite;
+}
+
+.cc-recurring-visual__node {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cc-recurring-node 4s ease-in-out 620ms infinite;
+}
+
+@keyframes cc-recurring-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes cc-recurring-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+@keyframes cc-recurring-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cc-recurring-ring {
+    from {
+        stroke-dashoffset: 0;
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.75;
+    }
+    to {
+        stroke-dashoffset: -36;
+        opacity: 0.4;
+    }
+}
+
+@keyframes cc-recurring-header {
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cc-recurring-node {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.35);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-recurring-visual,
+    .cc-recurring-visual__glow,
+    .cc-recurring-visual__orbit,
+    .cc-recurring-visual__orbit-ring,
+    .cc-recurring-visual__header-shine,
+    .cc-recurring-visual__node {
+        animation: none !important;
+    }
+
+    .cc-recurring-visual {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-recurring-visual__glow {
+        opacity: 0.75;
+    }
+
+    .cc-recurring-visual__orbit {
+        transform: rotate(35deg);
+    }
+
+    .cc-recurring-visual__node {
+        opacity: 0.95;
+        transform: none;
+    }
+}
+
+/* —— Reports page analytics visual —— */
+.cc-report-visual {
+    transform-origin: center;
+    animation: cc-report-enter 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-report-visual__glow {
+    transform-origin: center;
+    animation: cc-report-glow 4s ease-in-out 650ms infinite;
+}
+
+.cc-report-visual__sheet {
+    transform-origin: center;
+}
+
+.cc-report-visual__line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: cc-report-draw 700ms cubic-bezier(0.22, 1, 0.36, 1) 120ms forwards;
+}
+
+.cc-report-visual__dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation: cc-report-dot-in 420ms ease-out 520ms forwards;
+}
+
+.cc-report-visual__dot-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0;
+    animation:
+        cc-report-dot-in 420ms ease-out 660ms forwards,
+        cc-report-pulse 3.8s ease-in-out 1100ms infinite;
+}
+
+.cc-report-visual__edge {
+    stroke-dasharray: 12 20;
+    animation: cc-report-edge 4s ease-in-out 650ms infinite;
+}
+
+@keyframes cc-report-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cc-report-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.92;
+    }
+}
+
+@keyframes cc-report-draw {
+    from {
+        stroke-dashoffset: 100;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes cc-report-dot-in {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cc-report-pulse {
+    0%,
+    100% {
+        opacity: 0.65;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes cc-report-edge {
+    0% {
+        stroke-dashoffset: 20;
+        opacity: 0.25;
+    }
+    50% {
+        stroke-dashoffset: 0;
+        opacity: 0.7;
+    }
+    100% {
+        stroke-dashoffset: -16;
+        opacity: 0.25;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-report-visual,
+    .cc-report-visual__glow,
+    .cc-report-visual__line,
+    .cc-report-visual__dot,
+    .cc-report-visual__dot-pulse,
+    .cc-report-visual__edge {
+        animation: none !important;
+    }
+
+    .cc-report-visual {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-report-visual__glow {
+        opacity: 0.75;
+    }
+
+    .cc-report-visual__line {
+        stroke-dashoffset: 0;
+    }
+
+    .cc-report-visual__dot,
+    .cc-report-visual__dot-pulse {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* —— Intelligence: Next Month Forecast 3D visual —— */
+.cc-nmf-visual {
+    transform-origin: center;
+}
+
+.cc-nmf-visual__glow {
+    transform-origin: center;
+    animation: cc-nmf-glow 4.2s ease-in-out infinite;
+}
+
+.cc-nmf-visual__float {
+    transform-origin: 48px 48px;
+    animation: cc-nmf-float 4.2s ease-in-out infinite;
+}
+
+.cc-nmf-visual__bar--1 {
+    animation: cc-nmf-bar 4.2s ease-in-out infinite;
+}
+
+.cc-nmf-visual__bar--2 {
+    animation: cc-nmf-bar 4.2s ease-in-out 0.35s infinite;
+}
+
+.cc-nmf-visual__bar--3 {
+    animation: cc-nmf-bar 4.2s ease-in-out 0.7s infinite;
+}
+
+.cc-nmf-visual__line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+}
+
+.cc-nmf-visual__node {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cc-nmf-pulse 3.6s ease-in-out infinite;
+}
+
+.cc-nmf-visual__ring {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cc-nmf-ring 3.6s ease-in-out infinite;
+}
+
+.cc-nmf-visual__particle--1 {
+    animation: cc-nmf-particle 4.8s ease-in-out infinite;
+}
+
+.cc-nmf-visual__particle--2 {
+    animation: cc-nmf-particle 5.2s ease-in-out 0.6s infinite;
+}
+
+.cc-nmf-visual__particle--3 {
+    animation: cc-nmf-particle 4.6s ease-in-out 1.1s infinite;
+}
+
+@keyframes cc-nmf-glow {
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+@keyframes cc-nmf-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes cc-nmf-bar {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1.5px);
+    }
+}
+
+@keyframes cc-nmf-pulse {
+    0%,
+    100% {
+        opacity: 0.75;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+@keyframes cc-nmf-ring {
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: scale(0.92);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes cc-nmf-particle {
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(-3px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-nmf-visual__glow,
+    .cc-nmf-visual__float,
+    .cc-nmf-visual__bar--1,
+    .cc-nmf-visual__bar--2,
+    .cc-nmf-visual__bar--3,
+    .cc-nmf-visual__node,
+    .cc-nmf-visual__ring,
+    .cc-nmf-visual__particle--1,
+    .cc-nmf-visual__particle--2,
+    .cc-nmf-visual__particle--3 {
+        animation: none !important;
+    }
+
+    .cc-nmf-visual__glow {
+        opacity: 0.75;
+    }
+
+    .cc-nmf-visual__float,
+    .cc-nmf-visual__bar--1,
+    .cc-nmf-visual__bar--2,
+    .cc-nmf-visual__bar--3,
+    .cc-nmf-visual__node,
+    .cc-nmf-visual__ring,
+    .cc-nmf-visual__particle--1,
+    .cc-nmf-visual__particle--2,
+    .cc-nmf-visual__particle--3 {
+        transform: none;
+        opacity: 0.85;
+    }
+}
+
+/* ============================================================
+   Light appearance � CampusCoin identity (orange primary)
+   Activated when appearance toggle removes .dark from <html>
+   ============================================================ */
+html.cc-fintech-root:not(.dark) {
+    --background: #f5f4f2;
+    --foreground: #141414;
+    --card: #ffffff;
+    --card-foreground: #141414;
+    --popover: #ffffff;
+    --popover-foreground: #141414;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --secondary: #ebe9e6;
+    --secondary-foreground: #1a1a1a;
+    --muted: #ebe9e6;
+    --muted-foreground: #5c5c5c;
+    --accent: #f0eeec;
+    --accent-foreground: #1a1a1a;
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: rgba(0, 0, 0, 0.1);
+    --input: rgba(0, 0, 0, 0.12);
+    --ring: #e94f09;
+    --chart-1: #e94f09;
+    --chart-2: #c2410c;
+    --chart-3: #525252;
+    --chart-4: #a3a3a3;
+    --chart-5: #d4d4d4;
+    --sidebar-background: #faf9f8;
+    --sidebar-foreground: #2a2a2a;
+    --sidebar-primary: #e94f09;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: rgba(233, 79, 9, 0.1);
+    --sidebar-accent-foreground: #141414;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-ring: #e94f09;
+    --cc-orange: #e94f09;
+    --cc-orange-soft: rgba(233, 79, 9, 0.12);
+    --cc-surface: rgba(0, 0, 0, 0.03);
+    --cc-surface-elevated: rgba(0, 0, 0, 0.05);
+    --cc-glow: rgba(233, 79, 9, 0.16);
+    --cc-input-icon: #525252;
+    --cc-icon: #404040;
+    color-scheme: light;
+}
+
+html.cc-fintech-root:not(.dark) body {
+    background: #f5f4f2;
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) .cc-fintech {
+    --background: #f5f4f2;
+    --foreground: #141414;
+    --card: #ffffff;
+    --card-foreground: #141414;
+    --popover: #ffffff;
+    --popover-foreground: #141414;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --secondary: #ebe9e6;
+    --secondary-foreground: #1a1a1a;
+    --muted: #ebe9e6;
+    --muted-foreground: #5c5c5c;
+    --accent: #f0eeec;
+    --accent-foreground: #1a1a1a;
+    --border: rgba(0, 0, 0, 0.1);
+    --input: rgba(0, 0, 0, 0.12);
+    --ring: #e94f09;
+    --cc-surface: rgba(0, 0, 0, 0.03);
+    --cc-surface-elevated: rgba(0, 0, 0, 0.05);
+    --cc-glow: rgba(233, 79, 9, 0.16);
+    --cc-input-icon: #525252;
+    --cc-icon: #404040;
+    background: #f5f4f2;
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) .cc-fintech-atmosphere {
+    opacity: 0.35;
+}
+
+html.cc-fintech-root:not(.dark) .cc-fintech-grain {
+    opacity: 0.25;
+}
+
+html.cc-fintech-root:not(.dark) [data-slot='sidebar-inset'],
+html.cc-fintech-root:not(.dark) .bg-background,
+html.cc-fintech-root:not(.dark) [data-sidebar='inset'] {
+    background-color: #f5f4f2;
+    min-width: 0;
+}
+
+html.cc-fintech-root:not(.dark) .group\/sidebar-wrapper {
+    background: #f5f4f2;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='sidebar'] {
+    background: linear-gradient(180deg, #ffffff 0%, #faf9f8 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.04);
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button']:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) [data-sidebar='menu-button'][data-active='true'] {
+    background: rgba(233, 79, 9, 0.1);
+    color: #141414;
+}
+
+html.cc-fintech-root .cc-app-sidebar-trigger {
+    color: #cfcfcf;
+}
+
+html.cc-fintech-root .cc-app-sidebar-trigger:hover {
+    color: #ffffff;
+}
+
+html.cc-fintech-root:not(.dark) header.border-sidebar-border\/50,
+html.cc-fintech-root:not(.dark) .cc-app-header {
+    background: rgba(245, 244, 242, 0.92);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-app-sidebar-trigger {
+    color: #2a2a2a !important;
+}
+
+html.cc-fintech-root:not(.dark) .cc-app-sidebar-trigger:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #030303 !important;
+}
+
+html.cc-fintech-root:not(.dark) .border-border.bg-card,
+html.cc-fintech-root:not(.dark) .bg-card.rounded-xl,
+html.cc-fintech-root:not(.dark) .bg-card.rounded-lg,
+html.cc-fintech-root:not(.dark) .cc-card,
+html.cc-fintech-root:not(.dark) .cc-elev-2,
+html.cc-fintech-root:not(.dark) .cc-form-shell {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Dashboard utility/hero cards stay light in light mode so .text-white → #141414 remains readable */
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-card-utility,
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-card-hero {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-summary-metric {
+    background: #f7f7f7 !important;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-summary-metric__value {
+    color: #141414 !important;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-summary-metric__value--accent {
+    /* Darker brand orange for ≥4.5:1 on light KPI tiles (#f7f7f7) */
+    color: #b45309 !important;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dashboard .cc-summary-metric__hint {
+    color: #5c5c5c;
+}
+
+html.cc-fintech-root:not(.dark) .text-white {
+    color: #141414 !important;
+}
+
+/* Muted / eyebrow labels — light mode (STU-007): keep hierarchy, meet ≥4.5:1 on light surfaces */
+html.cc-fintech-root:not(.dark) .cc-label {
+    color: #5c5c5c;
+}
+
+html.cc-fintech-root:not(.dark) .cc-text-secondary {
+    color: #525252;
+}
+
+html.cc-fintech-root:not(.dark) .cc-text-tertiary {
+    color: #5c5c5c;
+}
+
+/* Intentional always-dark surfaces (e.g. Money Pulse breakdown dialog) */
+html.cc-fintech-root:not(.dark) .cc-dark-shell .text-white {
+    color: #ffffff !important;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dark-shell .cc-label {
+    color: #a8a8a8;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dark-shell .cc-text-secondary {
+    color: #8a8a8a;
+}
+
+html.cc-fintech-root:not(.dark) .cc-dark-shell .cc-text-tertiary {
+    color: #b8b8b8;
+}
+
+html.cc-fintech-root:not(.dark) .cc-toolbar {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-field,
+html.cc-fintech-root:not(.dark) input:not([type='checkbox']):not([type='radio']):not([type='hidden']):not([type='file']):not([type='range']),
+html.cc-fintech-root:not(.dark) select,
+html.cc-fintech-root:not(.dark) textarea {
+    background-color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) input::placeholder,
+html.cc-fintech-root:not(.dark) textarea::placeholder {
+    color: #737373;
+}
+
+html.cc-fintech-root:not(.dark) input[type='date'],
+html.cc-fintech-root:not(.dark) input[type='month'],
+html.cc-fintech-root:not(.dark) input[type='datetime-local'],
+html.cc-fintech-root:not(.dark) input.cc-field[type='date'],
+html.cc-fintech-root:not(.dark) input.cc-field[type='month'] {
+    color-scheme: light;
+}
+
+html.cc-fintech-root:not(.dark) input[type='date']::-webkit-calendar-picker-indicator,
+html.cc-fintech-root:not(.dark) input[type='month']::-webkit-calendar-picker-indicator {
+    opacity: 0.85;
+    /* Native light-scheme glyph is already dark — do not invert. */
+    filter: none;
+}
+
+html.cc-fintech-root:not(.dark) select.cc-field {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23525252' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+html.cc-fintech-root:not(.dark) select.cc-field option,
+html.cc-fintech-root:not(.dark) select option,
+html.cc-fintech-root:not(.dark) select optgroup {
+    background: #ffffff;
+    color: #141414;
+}
+
+html.cc-fintech-root:not(.dark) .cc-table-shell {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-table-shell th {
+    color: #5c5c5c;
+}
+
+html.cc-fintech-root:not(.dark) .cc-table-shell td {
+    color: #1a1a1a;
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+html.cc-fintech-root:not(.dark) [role='dialog'],
+html.cc-fintech-root:not(.dark) [data-radix-dialog-content] {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
+}
+
+html.cc-fintech-root:not(.dark) .cc-search-field__icon,
+html.cc-fintech-root:not(.dark) .cc-search-inline__icon {
+    color: var(--cc-input-icon, #525252);
+}
+
+/* �� Dashboard empty-state: premium 3D CampusCoin �� */
+.cc-empty-coin {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-inline: auto;
+    perspective: 640px;
+    transform-style: preserve-3d;
+    animation: cc-empty-coin-enter 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 768px) {
+    .cc-empty-coin {
+        width: 5.25rem;
+        height: 5.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cc-empty-coin {
+        width: 5.75rem;
+        height: 5.75rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .cc-empty-coin {
+        width: 6.25rem;
+        height: 6.25rem;
+    }
+}
+
+.cc-empty-coin__glow {
+    position: absolute;
+    inset: 8% 10%;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 50% 50%, rgba(233, 79, 9, 0.5) 0%, rgba(233, 79, 9, 0.14) 48%, transparent 72%);
+    filter: blur(6px);
+    animation: cc-empty-coin-glow 4.2s ease-in-out 0.8s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cc-empty-coin__shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    width: 52%;
+    height: 10%;
+    translate: -50% 0;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.45);
+    filter: blur(8px);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cc-empty-coin__float {
+    position: relative;
+    z-index: 1;
+    width: 78%;
+    height: 78%;
+    display: grid;
+    place-items: center;
+    animation: cc-empty-coin-float 4.6s ease-in-out 0.8s infinite;
+}
+
+.cc-empty-coin__pivot {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: cc-empty-coin-tilt 6.4s ease-in-out 0.8s infinite;
+}
+
+.cc-empty-coin__edge {
+    position: absolute;
+    inset: 6% 7%;
+    border-radius: 9999px;
+    transform: translateZ(0);
+    box-shadow:
+        0 0 0 5px #b83a06,
+        0 0 0 7px #7a2404,
+        inset 0 0 10px rgba(26, 11, 5, 0.35);
+    z-index: 1;
+}
+
+.cc-empty-coin__face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 9999px;
+    overflow: visible;
+}
+
+.cc-empty-coin__face--front {
+    transform: translateZ(7px);
+    z-index: 3;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+}
+
+.cc-empty-coin__face--back {
+    transform: rotateY(180deg) translateZ(7px);
+    z-index: 2;
+}
+
+.cc-empty-coin__specular {
+    animation: cc-empty-coin-specular 5.2s ease-in-out 1s infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@keyframes cc-empty-coin-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cc-empty-coin-tilt {
+    0%,
+    100% {
+        transform: rotateY(-26deg) rotateX(6deg);
+    }
+    50% {
+        transform: rotateY(26deg) rotateX(4deg);
+    }
+}
+
+@keyframes cc-empty-coin-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes cc-empty-coin-glow {
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@keyframes cc-empty-coin-specular {
+    0%,
+    100% {
+        transform: translateX(-28px);
+        opacity: 0.15;
+    }
+    45%,
+    55% {
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(48px);
+        opacity: 0.85;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-empty-coin,
+    .cc-empty-coin__glow,
+    .cc-empty-coin__float,
+    .cc-empty-coin__pivot,
+    .cc-empty-coin__specular {
+        animation: none !important;
+    }
+
+    .cc-empty-coin {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-empty-coin__pivot {
+        transform: rotateY(-12deg) rotateX(5deg);
+    }
+
+    .cc-empty-coin__glow {
+        opacity: 0.42;
+    }
+
+    .cc-empty-coin__float {
+        transform: none;
+    }
+}
+
+html.cc-fintech-root:not(.dark) .cc-empty-coin__glow {
+    opacity: 0.28;
+    background: radial-gradient(circle at 50% 50%, rgba(233, 79, 9, 0.38) 0%, rgba(233, 79, 9, 0.1) 48%, transparent 72%);
+}
+
+html.cc-fintech-root:not(.dark) .cc-empty-coin__shadow {
+    background: rgba(0, 0, 0, 0.18);
+}
+
+/* �� Transactions empty-state: empty wallet �� */
+.cc-empty-wallet {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 3.25rem;
+    margin-inline: auto;
+    animation: cc-empty-wallet-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 768px) {
+    .cc-empty-wallet {
+        width: 5.25rem;
+        height: 3.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cc-empty-wallet {
+        width: 5.75rem;
+        height: 4.15rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .cc-empty-wallet {
+        width: 6.25rem;
+        height: 4.5rem;
+    }
+}
+
+.cc-empty-wallet__glow {
+    position: absolute;
+    inset: -18% -8%;
+    border-radius: 9999px;
+    background: radial-gradient(ellipse at 50% 55%, rgba(233, 79, 9, 0.32) 0%, rgba(233, 79, 9, 0.08) 45%, transparent 70%);
+    filter: blur(5px);
+    animation: cc-empty-wallet-glow 4s ease-in-out 0.7s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cc-empty-wallet__shadow {
+    position: absolute;
+    left: 50%;
+    bottom: -2%;
+    width: 58%;
+    height: 14%;
+    translate: -50% 0;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.4);
+    filter: blur(6px);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
+    animation: cc-empty-wallet-shadow 4.6s ease-in-out 0.7s infinite;
+}
+
+.cc-empty-wallet__float {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    animation: cc-empty-wallet-float 4.6s ease-in-out 0.7s infinite;
+}
+
+.cc-empty-wallet__svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.cc-empty-wallet__flap {
+    transform-box: fill-box;
+    transform-origin: center top;
+    animation: cc-empty-wallet-flap 5.2s ease-in-out 0.9s infinite;
+}
+
+.cc-empty-wallet__specular {
+    animation: cc-empty-wallet-specular 5s ease-in-out 1s infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.cc-empty-wallet__ground {
+    animation: cc-empty-wallet-ground 4.6s ease-in-out 0.7s infinite;
+}
+
+@keyframes cc-empty-wallet-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cc-empty-wallet-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes cc-empty-wallet-shadow {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scaleX(1);
+    }
+    50% {
+        opacity: 0.35;
+        transform: scaleX(0.92);
+    }
+}
+
+@keyframes cc-empty-wallet-ground {
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+    50% {
+        opacity: 0.28;
+    }
+}
+
+@keyframes cc-empty-wallet-flap {
+    0%,
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-2.5deg) translateY(-1.5px);
+    }
+}
+
+@keyframes cc-empty-wallet-glow {
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cc-empty-wallet-specular {
+    0%,
+    100% {
+        transform: translateX(-36px);
+        opacity: 0.12;
+    }
+    45%,
+    55% {
+        opacity: 0.75;
+    }
+    50% {
+        transform: translateX(52px);
+        opacity: 0.7;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-empty-wallet,
+    .cc-empty-wallet__glow,
+    .cc-empty-wallet__shadow,
+    .cc-empty-wallet__float,
+    .cc-empty-wallet__flap,
+    .cc-empty-wallet__specular,
+    .cc-empty-wallet__ground {
+        animation: none !important;
+    }
+
+    .cc-empty-wallet {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cc-empty-wallet__glow {
+        opacity: 0.9;
+    }
+
+    .cc-empty-wallet__flap {
+        transform: rotate(-1deg);
+    }
+}
+
+html.cc-fintech-root:not(.dark) .cc-empty-wallet__glow {
+    opacity: 0.55;
+    background: radial-gradient(ellipse at 50% 55%, rgba(233, 79, 9, 0.22) 0%, rgba(233, 79, 9, 0.06) 45%, transparent 70%);
+}
+
+html.cc-fintech-root:not(.dark) .cc-empty-wallet__shadow {
+    background: rgba(0, 0, 0, 0.16);
+}

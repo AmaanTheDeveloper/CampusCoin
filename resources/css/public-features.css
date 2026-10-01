@@ -1,0 +1,813 @@
+/**
+ * Campus Coin — Features page (Phase 3) only.
+ * Scoped under `.cc-public-features` inside `.cc-public-root`.
+ */
+
+.cc-public-features {
+    --cc-feat-gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cc-public-features section[id] {
+    scroll-margin-top: 7.5rem;
+}
+
+/* Hero */
+.cc-feat-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(2.75rem, 5.5vw, 5rem) clamp(2.5rem, 5vw, 4rem);
+    background:
+        radial-gradient(ellipse 55% 50% at 92% 8%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 58%),
+        radial-gradient(ellipse 40% 35% at 4% 88%, color-mix(in oklab, var(--chart-2) 9%, transparent), transparent 55%),
+        linear-gradient(180deg, color-mix(in oklab, var(--muted) 35%, var(--background)), var(--background));
+}
+
+.cc-feat-hero__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .cc-feat-hero__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    }
+}
+
+.cc-feat-hero__title {
+    font-family: var(--font-sans);
+    font-size: clamp(2.15rem, 4.4vw + 0.5rem, 3.5rem);
+    font-weight: 650;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+}
+
+.cc-feat-hero__title span {
+    display: block;
+}
+
+.cc-feat-hero__lede {
+    margin-top: 1.15rem;
+    max-width: 34rem;
+    font-size: clamp(1rem, 0.35vw + 0.92rem, 1.1rem);
+    line-height: 1.65;
+    color: color-mix(in oklab, var(--foreground) 76%, transparent);
+}
+
+.cc-feat-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.65rem;
+}
+
+/* Ecosystem visual */
+.cc-feat-eco {
+    position: relative;
+    isolation: isolate;
+    min-height: 18rem;
+}
+
+.cc-feat-eco__core {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 11.5rem);
+    margin-inline: auto;
+    text-align: center;
+    border-radius: 1.1rem;
+    border: 1px solid color-mix(in oklab, var(--primary) 28%, var(--border));
+    background: color-mix(in oklab, var(--card) 94%, transparent);
+    box-shadow:
+        0 1px 0 color-mix(in oklab, var(--foreground) 4%, transparent),
+        0 22px 44px -24px color-mix(in oklab, var(--primary) 35%, transparent);
+    padding: 1.1rem 1rem;
+}
+
+.cc-feat-eco__core-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.cc-feat-eco__core-title {
+    margin-top: 0.25rem;
+    font-size: 1.05rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+}
+
+.cc-feat-eco__nodes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.cc-feat-eco__node {
+    border-radius: 0.85rem;
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    background: var(--card);
+    padding: 0.7rem 0.55rem;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--foreground) 82%, transparent);
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent);
+    animation: cc-feat-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-feat-eco__node:nth-child(1) {
+    animation-delay: 80ms;
+}
+.cc-feat-eco__node:nth-child(2) {
+    animation-delay: 140ms;
+}
+.cc-feat-eco__node:nth-child(3) {
+    animation-delay: 200ms;
+}
+.cc-feat-eco__node:nth-child(4) {
+    animation-delay: 260ms;
+}
+.cc-feat-eco__node:nth-child(5) {
+    animation-delay: 320ms;
+}
+.cc-feat-eco__node:nth-child(6) {
+    animation-delay: 380ms;
+}
+
+.cc-feat-eco__foot {
+    margin-top: 0.85rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 650;
+    color: var(--primary);
+}
+
+.cc-feat-eco__line {
+    display: block;
+    width: 2px;
+    height: 0.75rem;
+    margin: 0.35rem auto;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--primary) 45%, transparent), transparent);
+}
+
+/* Sticky / scroll feature nav */
+.cc-feat-nav-wrap {
+    position: sticky;
+    top: 3.5rem;
+    z-index: 30;
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+    background: color-mix(in oklab, var(--background) 92%, transparent);
+    backdrop-filter: blur(10px);
+}
+
+@media (min-width: 640px) {
+    .cc-feat-nav-wrap {
+        top: 4rem;
+    }
+}
+
+.cc-feat-nav {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-block: 0.7rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.cc-feat-nav::-webkit-scrollbar {
+    height: 4px;
+}
+
+.cc-feat-nav__btn {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    background: var(--card);
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--foreground) 72%, transparent);
+    white-space: nowrap;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+.cc-feat-nav__btn:hover {
+    border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+    color: var(--primary);
+}
+
+.cc-feat-nav__btn[aria-current='true'] {
+    border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+    background: color-mix(in oklab, var(--primary) 10%, var(--card));
+    color: var(--primary);
+}
+
+.cc-feat-nav__btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* Shared feature section */
+.cc-feat-kicker {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.cc-feat-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.65rem, 2vw + 1rem, 2.4rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    max-width: 18ch;
+}
+
+.cc-feat-lede {
+    margin-top: 0.85rem;
+    max-width: 34rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: color-mix(in oklab, var(--foreground) 74%, transparent);
+}
+
+.cc-feat-split {
+    display: grid;
+    gap: clamp(1.75rem, 4vw, 3rem);
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .cc-feat-split {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .cc-feat-split--flip > :first-child {
+        order: 2;
+    }
+
+    .cc-feat-split--flip > :last-child {
+        order: 1;
+    }
+}
+
+.cc-feat-panel {
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    background: var(--card);
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent);
+    overflow: hidden;
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.cc-feat-panel:hover {
+    border-color: color-mix(in oklab, var(--primary) 22%, var(--border));
+    box-shadow: 0 8px 22px -16px color-mix(in oklab, var(--foreground) 16%, transparent);
+}
+
+.cc-feat-panel__body {
+    padding: 1.15rem;
+}
+
+.cc-feat-note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.cc-feat-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1.15rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.cc-feat-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.cc-feat-enter {
+    animation: cc-feat-enter 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cc-feat-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Transactions list */
+.cc-feat-txn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+}
+
+.cc-feat-txn:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.cc-feat-txn:first-child {
+    padding-top: 0;
+}
+
+.cc-feat-txn__meta {
+    min-width: 0;
+}
+
+.cc-feat-txn__cat {
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.cc-feat-txn__date {
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.cc-feat-txn__amt {
+    font-size: 0.95rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.cc-feat-txn__amt--in {
+    color: var(--success);
+}
+
+.cc-feat-txn__amt--out {
+    color: color-mix(in oklab, var(--foreground) 88%, transparent);
+}
+
+/* Category AI card */
+.cc-feat-suggest {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.cc-feat-suggest__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.cc-feat-suggest__label {
+    color: var(--muted-foreground);
+}
+
+.cc-feat-suggest__value {
+    font-weight: 600;
+    text-align: right;
+}
+
+.cc-feat-suggest__actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+.cc-feat-suggest__confidence {
+    height: 0.4rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--muted) 80%, transparent);
+    overflow: hidden;
+}
+
+.cc-feat-suggest__confidence > span {
+    display: block;
+    height: 100%;
+    width: 97%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--chart-2) 65%, var(--primary)));
+    animation: cc-feat-bar 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Budget cards */
+.cc-feat-budgets {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.cc-feat-budget {
+    border-radius: 0.9rem;
+    border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+    background: color-mix(in oklab, var(--muted) 35%, var(--card));
+    padding: 0.95rem 1rem;
+}
+
+.cc-feat-budget--warn {
+    border-color: color-mix(in oklab, var(--warning) 35%, var(--border));
+    background: color-mix(in oklab, var(--warning) 7%, var(--card));
+}
+
+.cc-feat-budget__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.cc-feat-budget__bar {
+    margin-top: 0.55rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--muted) 85%, transparent);
+    overflow: hidden;
+}
+
+.cc-feat-budget__bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--primary);
+    transform-origin: left;
+    animation: cc-feat-bar 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-feat-budget--warn .cc-feat-budget__bar > span {
+    background: var(--warning);
+}
+
+.cc-feat-budget__meta {
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+@keyframes cc-feat-bar {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* AI dark section */
+.cc-feat-ai {
+    background:
+        radial-gradient(ellipse 55% 45% at 88% 18%, color-mix(in oklab, var(--primary) 26%, transparent), transparent 55%),
+        linear-gradient(155deg, #0a0a0a, #121212 55%, #1a0f0a);
+    color: #f5f4f2;
+}
+
+.cc-feat-ai .cc-feat-kicker {
+    color: color-mix(in oklab, #e94f09 75%, white);
+}
+
+.cc-feat-ai .cc-feat-title {
+    color: #fafafa;
+}
+
+.cc-feat-ai .cc-feat-lede {
+    color: color-mix(in oklab, #e8e8e8 78%, transparent);
+}
+
+.cc-feat-ai-cards {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    max-width: 34rem;
+}
+
+.cc-feat-ai-card {
+    border-radius: 1rem;
+    border: 1px solid color-mix(in oklab, white 12%, transparent);
+    background: color-mix(in oklab, white 6%, transparent);
+    backdrop-filter: blur(8px);
+    padding: 1.05rem 1.15rem;
+    animation: cc-feat-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cc-feat-ai-card:nth-child(1) {
+    animation-delay: 60ms;
+}
+.cc-feat-ai-card:nth-child(2) {
+    animation-delay: 140ms;
+}
+.cc-feat-ai-card:nth-child(3) {
+    animation-delay: 220ms;
+}
+
+.cc-feat-ai-card__label {
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, #e94f09 75%, white);
+}
+
+.cc-feat-ai-card p {
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: color-mix(in oklab, white 88%, transparent);
+}
+
+.cc-feat-ai-disclaimer {
+    margin-top: 1.1rem;
+    font-size: 0.75rem;
+    color: color-mix(in oklab, white 48%, transparent);
+}
+
+/* Reports */
+.cc-feat-report-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .cc-feat-report-grid {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.cc-feat-chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    height: 7.5rem;
+    padding-top: 0.5rem;
+}
+
+.cc-feat-chart-bars > span {
+    flex: 1;
+    border-radius: 0.35rem 0.35rem 0.15rem 0.15rem;
+    background: linear-gradient(180deg, var(--primary), color-mix(in oklab, var(--primary) 55%, var(--chart-2)));
+    transform-origin: bottom;
+    animation: cc-feat-grow 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cc-feat-grow {
+    from {
+        transform: scaleY(0.15);
+        opacity: 0.4;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.cc-feat-donut-legend {
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+}
+
+.cc-feat-donut-legend li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.cc-feat-dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+}
+
+/* Saving split */
+.cc-feat-save-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .cc-feat-save-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.cc-feat-progress {
+    margin-top: 0.85rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--muted) 80%, transparent);
+    overflow: hidden;
+}
+
+.cc-feat-progress > span {
+    display: block;
+    height: 100%;
+    width: 42%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--chart-5) 70%, var(--primary)));
+    animation: cc-feat-bar 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* CSV workflow */
+.cc-feat-flow {
+    display: grid;
+    gap: 0.55rem;
+}
+
+@media (min-width: 900px) {
+    .cc-feat-flow {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+}
+
+.cc-feat-flow__step {
+    position: relative;
+    border-radius: 0.85rem;
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    background: var(--card);
+    padding: 0.95rem 0.85rem;
+    text-align: center;
+}
+
+@media (min-width: 900px) {
+    .cc-feat-flow__step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -0.4rem;
+        width: 0.8rem;
+        height: 2px;
+        background: color-mix(in oklab, var(--primary) 40%, transparent);
+        transform: translateY(-50%);
+    }
+}
+
+.cc-feat-flow__num {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+}
+
+.cc-feat-flow__label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 650;
+}
+
+.cc-feat-csv {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+}
+
+.cc-feat-csv th,
+.cc-feat-csv td {
+    padding: 0.45rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+}
+
+.cc-feat-csv th {
+    color: var(--muted-foreground);
+    font-weight: 600;
+}
+
+/* Notifications */
+.cc-feat-notices {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.cc-feat-notice {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    border-radius: 0.9rem;
+    border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+    background: var(--card);
+    padding: 0.95rem 1rem;
+}
+
+.cc-feat-notice__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.6rem;
+    background: color-mix(in oklab, var(--primary) 10%, var(--muted));
+    color: var(--primary);
+}
+
+.cc-feat-notice__kind {
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+.cc-feat-notice__text {
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+/* UX points */
+.cc-feat-ux {
+    display: grid;
+    gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+    .cc-feat-ux {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .cc-feat-ux {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.cc-feat-ux__card {
+    border-radius: 1rem;
+    border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+    background: var(--card);
+    padding: 1.2rem 1.1rem;
+}
+
+.cc-feat-ux__card h3 {
+    margin-top: 0.65rem;
+    font-size: 1rem;
+    font-weight: 650;
+}
+
+.cc-feat-ux__card p {
+    margin-top: 0.35rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: color-mix(in oklab, var(--foreground) 72%, transparent);
+}
+
+/* Final CTA */
+.cc-feat-cta {
+    background:
+        radial-gradient(ellipse 45% 55% at 18% 50%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%),
+        radial-gradient(ellipse 35% 45% at 92% 28%, color-mix(in oklab, var(--chart-2) 10%, transparent), transparent 55%),
+        color-mix(in oklab, var(--primary) 6%, var(--muted));
+}
+
+.cc-feat-cta__panel {
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+}
+
+.cc-feat-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.65rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-feat-enter,
+    .cc-feat-eco__node,
+    .cc-feat-ai-card,
+    .cc-feat-suggest__confidence > span,
+    .cc-feat-budget__bar > span,
+    .cc-feat-progress > span,
+    .cc-feat-chart-bars > span {
+        animation: none !important;
+    }
+}

@@ -1,0 +1,718 @@
+/* ==========================================================================
+   CampusCoin Admin — isolated under .cc-admin / html.cc-admin
+   Does not alter student dashboard styles.
+   ========================================================================== */
+
+html.cc-fintech-root.cc-admin,
+.cc-admin {
+    --cc-admin-accent: #e94f09;
+    --cc-admin-accent-soft: rgba(233, 79, 9, 0.12);
+    --cc-admin-surface: rgba(255, 255, 255, 0.03);
+    --cc-admin-border: rgba(255, 255, 255, 0.08);
+    /* ~7:1+ on near-black surfaces for secondary copy (AA) */
+    --cc-admin-muted: #b4b4b4;
+    --cc-admin-meta: #a3a3a3;
+    --muted-foreground: var(--cc-admin-muted);
+}
+
+.cc-admin .text-muted-foreground,
+.cc-admin .cc-text-secondary {
+    color: var(--cc-admin-muted);
+}
+
+.cc-admin .cc-admin-meta {
+    color: var(--cc-admin-meta);
+}
+
+.cc-admin .cc-admin-header {
+    background: rgba(3, 3, 3, 0.72);
+    backdrop-filter: blur(12px);
+}
+
+.cc-admin .cc-admin-sidebar-trigger {
+    color: #e8e8e8;
+}
+
+.cc-admin .cc-admin-sidebar-trigger:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.cc-admin .cc-admin-theme-toggle > button,
+.cc-admin .cc-admin-theme-toggle [data-slot='dropdown-menu-trigger'] {
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+}
+
+.cc-admin .cc-admin-nav-item {
+    min-height: 2.75rem;
+}
+
+.cc-admin .cc-admin-switch-link {
+    opacity: 0.92;
+}
+
+.cc-admin .cc-admin-switch-link:hover {
+    border-color: transparent;
+}
+
+.cc-admin .cc-admin-kpi {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cc-admin-border);
+    border-radius: 1rem;
+    background: linear-gradient(145deg, rgba(233, 79, 9, 0.08) 0%, rgba(3, 3, 3, 0.55) 48%, rgba(255, 255, 255, 0.02) 100%);
+    padding: 1rem 1.1rem;
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cc-admin .cc-admin-kpi:hover {
+    border-color: rgba(233, 79, 9, 0.35);
+}
+
+.cc-admin a.cc-admin-kpi:hover {
+    transform: translateY(-1px);
+}
+
+.cc-admin .cc-admin-kpi__label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cc-admin-muted);
+}
+
+.cc-admin .cc-admin-kpi__value {
+    margin-top: 0.35rem;
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #f3f3f3;
+    font-variant-numeric: tabular-nums;
+}
+
+.cc-admin .cc-admin-kpi__meta {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--cc-admin-muted);
+}
+
+.cc-admin .cc-admin-kpi__delta--up {
+    color: #ff8b5c;
+}
+
+.cc-admin .cc-admin-kpi__delta--down {
+    color: #b8b8b8;
+}
+
+.cc-admin .cc-admin-chart-panel {
+    border: 1px solid var(--cc-admin-border);
+    border-radius: 1rem;
+    background: var(--cc-admin-surface);
+    padding: 1rem 1.1rem;
+}
+
+.cc-admin .cc-admin-chart-empty,
+.cc-admin .cc-admin-empty-compact {
+    box-shadow: none;
+}
+
+.cc-admin .cc-admin-category-bar {
+    height: 0.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.cc-admin .cc-admin-category-bar__fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #e94f09, #ff8b5c);
+}
+
+.cc-admin .cc-admin-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--cc-admin-border);
+    border-radius: 1rem;
+    background: var(--cc-admin-surface);
+}
+
+.cc-admin .cc-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.cc-admin .cc-admin-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cc-admin-muted);
+    border-bottom: 1px solid var(--cc-admin-border);
+}
+
+.cc-admin .cc-admin-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #e8e8e8;
+    vertical-align: middle;
+}
+
+.cc-admin .cc-admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.cc-admin .cc-admin-table tbody tr:hover td {
+    background: rgba(233, 79, 9, 0.04);
+}
+
+.cc-admin .cc-admin-mobile-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border: 1px solid var(--cc-admin-border);
+    border-radius: 0.9rem;
+    background: var(--cc-admin-surface);
+    padding: 1rem;
+}
+
+.cc-admin .cc-admin-mobile-card-list {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.cc-admin .cc-admin-mobile-card > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__meta,
+.cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__email {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__actions {
+    min-width: 0;
+    width: 100%;
+}
+
+.cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__actions > * {
+    min-width: 0;
+}
+
+@media (max-width: 360px) {
+    .cc-admin .cc-admin-mobile-card {
+        padding: 0.75rem;
+    }
+
+    .cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__actions {
+        gap: 0.35rem;
+    }
+
+    .cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__actions button,
+    .cc-admin .cc-admin-mobile-card .cc-admin-mobile-card__actions a {
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+        font-size: 0.75rem;
+    }
+}
+
+.cc-admin .cc-admin-period {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.cc-admin .cc-admin-period__btn {
+    border-radius: 0.5rem;
+    border: 1px solid var(--cc-admin-border);
+    background: transparent;
+    padding: 0.4rem 0.75rem;
+    min-height: 2rem;
+    font-size: 0.75rem;
+    color: var(--cc-admin-muted);
+    transition:
+        border-color 0.15s ease,
+        color 0.15s ease,
+        background 0.15s ease;
+}
+
+.cc-admin .cc-admin-period__btn:hover {
+    color: #f3f3f3;
+    border-color: rgba(233, 79, 9, 0.4);
+}
+
+.cc-admin .cc-admin-period__btn:focus-visible {
+    outline: 2px solid #e94f09;
+    outline-offset: 2px;
+}
+
+.cc-admin .cc-admin-period__btn.is-active {
+    color: #fff;
+    border-color: #e94f09;
+    background: rgba(233, 79, 9, 0.18);
+}
+
+@media (max-width: 767px) {
+    .cc-admin .cc-admin-period__btn {
+        min-height: 2.75rem;
+        padding: 0.55rem 0.9rem;
+    }
+}
+
+.cc-admin .cc-admin-status--active {
+    border-color: rgba(74, 222, 128, 0.35);
+    background: rgba(74, 222, 128, 0.12);
+    color: #86efac;
+}
+
+.cc-admin .cc-admin-status--muted {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #d4d4d4;
+}
+
+.cc-admin .cc-admin-alert {
+    border-radius: 0.85rem;
+    border: 1px solid var(--cc-admin-border);
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cc-admin .cc-admin-alert--warning {
+    border-color: rgba(233, 79, 9, 0.35);
+    background: rgba(233, 79, 9, 0.08);
+}
+
+.cc-admin .cc-admin-alert--info {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cc-admin .cc-admin-quick-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    border: 1px solid var(--cc-admin-border);
+    border-radius: 0.9rem;
+    background: linear-gradient(160deg, rgba(233, 79, 9, 0.1), rgba(3, 3, 3, 0.4));
+    padding: 1rem;
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cc-admin .cc-admin-quick-tile:hover {
+    border-color: rgba(233, 79, 9, 0.45);
+    transform: translateY(-1px);
+}
+
+.cc-admin .cc-admin-activity-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 0;
+}
+
+.cc-admin .cc-admin-activity-item:last-child {
+    border-bottom: none;
+}
+
+.cc-admin .cc-admin-activity-icon {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    background: rgba(233, 79, 9, 0.12);
+    color: #ff8b5c;
+}
+
+/* Admin visuals */
+.cc-admin-visual__glow {
+    animation: cc-admin-visual-glow 4.5s ease-in-out infinite;
+}
+
+.cc-admin-visual--control .cc-admin-visual__pulse,
+.cc-admin-visual--control .cc-admin-visual__dot {
+    animation: cc-admin-visual-pulse 2.8s ease-in-out infinite;
+}
+
+.cc-admin-visual--users .cc-admin-visual__avatar {
+    animation: cc-admin-visual-float 3.6s ease-in-out infinite;
+}
+
+.cc-admin-visual--users .cc-admin-visual__avatar-b {
+    animation: cc-admin-visual-float 3.6s ease-in-out infinite 0.4s;
+}
+
+.cc-admin-visual--categories .cc-admin-visual__tile-a,
+.cc-admin-visual--categories .cc-admin-visual__tile-b,
+.cc-admin-visual--categories .cc-admin-visual__tile-c {
+    animation: cc-admin-visual-float 4s ease-in-out infinite;
+}
+
+.cc-admin-visual--categories .cc-admin-visual__tile-b {
+    animation-delay: 0.25s;
+}
+
+.cc-admin-visual--categories .cc-admin-visual__tile-c {
+    animation-delay: 0.5s;
+}
+
+.cc-admin-visual--announcements .cc-admin-visual__bubble {
+    animation: cc-admin-visual-float 3.2s ease-in-out infinite;
+}
+
+.cc-admin-visual--tips .cc-admin-visual__bulb,
+.cc-admin-visual--tips .cc-admin-visual__spark {
+    animation: cc-admin-visual-pulse 2.6s ease-in-out infinite;
+}
+
+.cc-admin-visual--analytics .cc-admin-visual__bar-2,
+.cc-admin-visual--analytics .cc-admin-visual__bar-3,
+.cc-admin-visual--analytics .cc-admin-visual__bar-4 {
+    transform-origin: bottom;
+    animation: cc-admin-visual-bar 3.4s ease-in-out infinite;
+}
+
+.cc-admin-visual--analytics .cc-admin-visual__bar-3 {
+    animation-delay: 0.2s;
+}
+
+.cc-admin-visual--analytics .cc-admin-visual__bar-4 {
+    animation-delay: 0.4s;
+}
+
+.cc-admin-visual--intelligence .cc-admin-visual__rays {
+    animation: cc-admin-visual-pulse 3s ease-in-out infinite;
+}
+
+.cc-admin-visual--intelligence .cc-admin-visual__core {
+    animation: cc-admin-visual-float 3.8s ease-in-out infinite;
+}
+
+.cc-admin-visual--notifications .cc-admin-visual__bell,
+.cc-admin-visual--notifications .cc-admin-visual__bell-base {
+    animation: cc-admin-visual-float 3.4s ease-in-out infinite;
+}
+
+.cc-admin-visual--notifications .cc-admin-visual__notif-dot {
+    animation: cc-admin-visual-pulse 2.4s ease-in-out infinite;
+}
+
+.cc-admin-visual--notifications .cc-admin-visual__notif-ring {
+    animation: cc-admin-visual-pulse 2.8s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.cc-admin .cc-admin-notification-trigger {
+    color: #e8e8e8;
+}
+
+.cc-admin .cc-admin-notification-trigger:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.cc-admin .cc-admin-notification-trigger--unread .cc-admin-notification-badge {
+    animation: cc-admin-notification-badge-pulse 2.8s ease-in-out infinite;
+}
+
+.cc-admin .cc-admin-notification-item:hover {
+    background: rgba(233, 79, 9, 0.06);
+}
+
+.cc-admin .cc-admin-notification-item--unread {
+    background: rgba(233, 79, 9, 0.08);
+}
+
+.cc-admin .cc-admin-notification-row {
+    border-color: var(--cc-admin-border);
+    background: var(--cc-admin-surface);
+}
+
+.cc-admin .cc-admin-notification-row--unread {
+    border-color: rgba(233, 79, 9, 0.28);
+    background: rgba(233, 79, 9, 0.08);
+}
+
+.cc-admin .cc-admin-notification-icon {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--cc-admin-muted);
+}
+
+.cc-admin .cc-admin-notification-icon--success {
+    background: rgba(74, 222, 128, 0.12);
+    color: #86efac;
+}
+
+.cc-admin .cc-admin-notification-icon--warning {
+    background: rgba(233, 79, 9, 0.14);
+    color: #ff8b5c;
+}
+
+.cc-admin .cc-admin-notification-icon--important {
+    background: rgba(239, 68, 68, 0.14);
+    color: #fca5a5;
+}
+
+.cc-admin .cc-admin-notification-icon--info {
+    background: rgba(255, 255, 255, 0.06);
+    color: #d4d4d4;
+}
+
+@keyframes cc-admin-notification-badge-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(233, 79, 9, 0.35);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(233, 79, 9, 0);
+    }
+}
+
+@keyframes cc-admin-visual-glow {
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cc-admin-visual-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes cc-admin-visual-pulse {
+    0%,
+    100% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes cc-admin-visual-bar {
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.92);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-admin-visual__glow,
+    .cc-admin-visual__pulse,
+    .cc-admin-visual__dot,
+    .cc-admin-visual__avatar,
+    .cc-admin-visual__avatar-b,
+    .cc-admin-visual__tile-a,
+    .cc-admin-visual__tile-b,
+    .cc-admin-visual__tile-c,
+    .cc-admin-visual__bubble,
+    .cc-admin-visual__bulb,
+    .cc-admin-visual__spark,
+    .cc-admin-visual__bar-1,
+    .cc-admin-visual__bar-2,
+    .cc-admin-visual__bar-3,
+    .cc-admin-visual__bar-4,
+    .cc-admin-visual__trend,
+    .cc-admin-visual__core,
+    .cc-admin-visual__rays,
+    .cc-admin-visual__ring,
+    .cc-admin-visual__check,
+    .cc-admin-visual__bell,
+    .cc-admin-visual__bell-base,
+    .cc-admin-visual__notif-dot,
+    .cc-admin-visual__notif-ring,
+    .cc-admin .cc-admin-kpi,
+    .cc-admin .cc-admin-quick-tile,
+    .cc-admin .cc-admin-notification-trigger--unread .cc-admin-notification-badge {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* Light theme overrides */
+html.cc-fintech-root:not(.dark) .cc-admin {
+    --cc-admin-muted: #5c5c5c;
+    --cc-admin-meta: #525252;
+    --muted-foreground: var(--cc-admin-muted);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-header {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-header p,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-kpi__value {
+    color: #1a1a1a;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-sidebar-trigger {
+    color: #2a2a2a;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-sidebar-trigger:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #030303;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-kpi {
+    background: linear-gradient(145deg, rgba(233, 79, 9, 0.08) 0%, #ffffff 55%, #f7f7f7 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-kpi__label,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-kpi__meta {
+    color: #5c5c5c;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-chart-panel,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-table-wrap,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-mobile-card,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-quick-tile,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-alert {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-table th {
+    color: #6b6b6b;
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-table td {
+    color: #2a2a2a;
+    border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-table tbody tr:hover td {
+    background: rgba(233, 79, 9, 0.05);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-category-bar {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-period__btn {
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #5c5c5c;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-period__btn:hover {
+    color: #1a1a1a;
+    border-color: rgba(233, 79, 9, 0.45);
+    background: rgba(233, 79, 9, 0.06);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-period__btn.is-active {
+    color: #030303;
+    background: rgba(233, 79, 9, 0.12);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-status--active {
+    border-color: rgba(22, 163, 74, 0.35);
+    background: rgba(22, 163, 74, 0.1);
+    color: #166534;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-status--muted {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+    color: #525252;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-activity-icon {
+    background: rgba(233, 79, 9, 0.1);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-trigger {
+    color: #2a2a2a;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-trigger:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #030303;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-item:hover {
+    background: rgba(233, 79, 9, 0.06);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-item--unread,
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-row--unread {
+    background: rgba(233, 79, 9, 0.08);
+    border-color: rgba(233, 79, 9, 0.22);
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-icon--info {
+    background: rgba(0, 0, 0, 0.05);
+    color: #404040;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-icon--success {
+    background: rgba(22, 163, 74, 0.1);
+    color: #166534;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-icon--warning {
+    background: rgba(233, 79, 9, 0.12);
+    color: #c2410c;
+}
+
+html.cc-fintech-root:not(.dark) .cc-admin .cc-admin-notification-icon--important {
+    background: rgba(220, 38, 38, 0.1);
+    color: #b91c1c;
+}
+
+/* Align primary admin actions with shared dash button DNA */
+.cc-admin .bg-primary {
+    box-shadow: 0 8px 22px rgba(233, 79, 9, 0.28);
+}
+
+.cc-admin .bg-primary:hover {
+    filter: brightness(1.06);
+}
+
+.cc-admin .cc-admin-table-wrap,
+.cc-admin .cc-admin-mobile-card,
+.cc-admin .cc-admin-chart-panel {
+    border-radius: var(--radius);
+}
+
+.cc-admin .cc-card,
+.cc-admin .cc-form-shell {
+    border-radius: var(--radius);
+}
+
+.cc-admin button:focus-visible,
+.cc-admin a:focus-visible,
+.cc-admin [role='button']:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(233, 79, 9, 0.35);
+}
+

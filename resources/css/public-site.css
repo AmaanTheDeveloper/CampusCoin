@@ -1,0 +1,267 @@
+/**
+ * Campus Coin — public marketing site foundation.
+ * Brand tokens inherit from :root (dashboard DNA: orange #d14508).
+ * Scoped under `.cc-public-root` for layout structure only.
+ */
+
+.cc-public-root {
+    --cc-public-max: 72rem;
+    --cc-public-pad-x: 1rem;
+    --cc-public-section-y: 4rem;
+    --cc-orange: #d14508;
+    --cc-orange-soft: rgba(209, 69, 8, 0.12);
+    --cc-accent-text: #d14508;
+    min-height: 100svh;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.dark .cc-public-root {
+    --cc-accent-text: #ff9b6b;
+}
+
+@media (min-width: 640px) {
+    .cc-public-root {
+        --cc-public-pad-x: 1.5rem;
+        --cc-public-section-y: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cc-public-root {
+        --cc-public-pad-x: 2rem;
+        --cc-public-section-y: 6rem;
+    }
+}
+
+.cc-public-container {
+    width: 100%;
+    max-width: var(--cc-public-max);
+    margin-inline: auto;
+    padding-inline: var(--cc-public-pad-x);
+}
+
+.cc-public-section {
+    padding-block: var(--cc-public-section-y);
+}
+
+.cc-public-section--muted {
+    background-color: color-mix(in oklab, var(--muted) 45%, transparent);
+}
+
+.cc-public-section--accent {
+    background-color: color-mix(in oklab, var(--primary) 8%, var(--background));
+}
+
+.cc-public-section--dark {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.cc-public-section--dark .cc-public-caption,
+.cc-public-section--dark .text-muted-foreground {
+    color: color-mix(in oklab, var(--background) 72%, transparent);
+}
+
+/* Typography — Instrument Sans hierarchy aligned with dashboard density */
+.cc-public-display {
+    font-family: var(--font-sans);
+    font-size: clamp(2.1rem, 3.5vw + 1rem, 3.25rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    max-width: 18ch;
+}
+
+.cc-public-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.cc-public-h2 {
+    font-family: var(--font-sans);
+    font-size: clamp(1.35rem, 1.2vw + 1rem, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+.cc-public-h3 {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+}
+
+.cc-public-body {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 40rem;
+    color: color-mix(in oklab, var(--foreground) 88%, transparent);
+}
+
+.cc-public-caption {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted-foreground);
+}
+
+.cc-public-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cc-accent-text, var(--primary));
+}
+
+/* Navbar */
+.cc-public-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid transparent;
+    background-color: color-mix(in oklab, var(--background) 72%, transparent);
+    backdrop-filter: blur(12px);
+    transition:
+        background-color 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease;
+}
+
+.cc-public-nav--scrolled {
+    border-bottom-color: color-mix(in oklab, var(--border) 90%, transparent);
+    background-color: color-mix(in oklab, var(--background) 94%, transparent);
+    box-shadow: 0 1px 0 color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+
+.cc-public-nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: color-mix(in oklab, var(--foreground) 72%, transparent);
+    border-radius: calc(var(--radius) - 4px);
+    transition:
+        color 160ms ease,
+        background-color 160ms ease;
+}
+
+.cc-public-nav-link:hover {
+    color: var(--foreground);
+    background-color: color-mix(in oklab, var(--muted) 70%, transparent);
+}
+
+.cc-public-nav-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+.cc-public-nav-link--active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Card foundation */
+.cc-public-card {
+    border-radius: var(--radius);
+    border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+    background-color: var(--card);
+    color: var(--card-foreground);
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+
+.cc-public-card--interactive {
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.cc-public-card--interactive:hover {
+    border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+    box-shadow: 0 8px 24px color-mix(in oklab, var(--foreground) 6%, transparent);
+    transform: translateY(-1px);
+}
+
+/* Footer */
+.cc-public-footer {
+    background-color: color-mix(in oklab, var(--muted) 35%, var(--background));
+}
+
+.cc-public-footer__heading {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    margin-bottom: 0.85rem;
+}
+
+.cc-public-footer__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: color-mix(in oklab, var(--foreground) 78%, transparent);
+    transition: color 160ms ease;
+}
+
+.cc-public-footer__link:hover {
+    color: var(--primary);
+}
+
+.cc-public-footer__link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring);
+    border-radius: 2px;
+}
+
+/* Page enter */
+.cc-public-enter {
+    animation: cc-public-enter 360ms ease both;
+}
+
+@keyframes cc-public-enter {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cc-public-nav,
+    .cc-public-card--interactive,
+    .cc-public-nav-link,
+    .cc-public-footer__link {
+        transition: none;
+    }
+
+    .cc-public-enter {
+        animation: none;
+    }
+
+    .cc-public-card--interactive:hover {
+        transform: none;
+    }
+}
+
+/* Dark-mode readable accents for small UI text on near-black surfaces */
+.dark .cc-hiw-kicker,
+.dark .cc-hiw-step__num,
+.dark .cc-hiw-dark-panel__label,
+.dark .cc-feat-kicker,
+.dark .cc-feat-ai-card__label,
+.dark .cc-feat-label,
+.dark .cc-about-kicker,
+.dark .cc-about-label,
+.dark .cc-contact-kicker,
+.dark .cc-intel-preview__kicker,
+.dark .cc-intel-preview__chrome-label,
+.dark .cc-public-label {
+    color: #ff9b6b;
+}

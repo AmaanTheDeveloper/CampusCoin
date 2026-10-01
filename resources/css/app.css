@@ -1,0 +1,224 @@
+@import 'tailwindcss';
+@import './dashboard-fintech.css';
+@import './admin-fintech.css';
+@import './public-site.css';
+@import './public-home.css';
+@import './public-features.css';
+@import './public-how-it-works.css';
+@import './public-about-contact.css';
+
+@plugin 'tailwindcss-animate';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/*
+  Campus Coin design foundation — dashboard DNA (fintech orange).
+  Authenticated app overrides further via html.cc-fintech-root.
+  Public/auth inherit these brand tokens so the product stays one system.
+*/
+:root {
+    /* #d14508 keeps brand orange while meeting WCAG AA with white button text */
+    --cc-orange: #d14508;
+    --cc-orange-soft: rgba(209, 69, 8, 0.12);
+    --cc-surface: rgba(0, 0, 0, 0.03);
+    --cc-surface-elevated: rgba(0, 0, 0, 0.05);
+    --cc-glow: rgba(209, 69, 8, 0.16);
+    --cc-input-icon: #525252;
+    --cc-icon: #404040;
+
+    --background: #f5f4f2;
+    --foreground: #141414;
+    --card: #ffffff;
+    --card-foreground: #141414;
+    --popover: #ffffff;
+    --popover-foreground: #141414;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --cc-accent-text: #d14508;
+    --secondary: #ebe9e6;
+    --secondary-foreground: #1a1a1a;
+    --muted: #ebe9e6;
+    --muted-foreground: #5c5c5c;
+    --accent: #eceae7;
+    --accent-foreground: #1a1a1a;
+    --destructive: #ef4444;
+    --destructive-foreground: #fafafa;
+    --success: #16a34a;
+    --success-foreground: #ffffff;
+    --warning: #d97706;
+    --warning-foreground: #141414;
+    --border: rgba(0, 0, 0, 0.1);
+    --input: rgba(0, 0, 0, 0.12);
+    --ring: #d14508;
+    --chart-1: #d14508;
+    --chart-2: #f97316;
+    --chart-3: #ea580c;
+    --chart-4: #78716c;
+    --chart-5: #292524;
+    --radius: 0.85rem;
+    --sidebar-background: #f0eeeb;
+    --sidebar-foreground: #292524;
+    --sidebar-primary: #d14508;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #e4e1dc;
+    --sidebar-accent-foreground: #1a1a1a;
+    --sidebar-border: rgba(0, 0, 0, 0.1);
+    --sidebar-ring: #d14508;
+}
+
+.dark {
+    --cc-orange: #d14508;
+    --cc-orange-soft: rgba(209, 69, 8, 0.18);
+    --cc-surface: rgba(255, 255, 255, 0.035);
+    --cc-surface-elevated: rgba(255, 255, 255, 0.055);
+    --cc-glow: rgba(209, 69, 8, 0.22);
+    --cc-input-icon: #d4d4d4;
+    --cc-icon: #e5e5e5;
+
+    --background: #030303;
+    --foreground: #f3f3f3;
+    --card: #0a0a0a;
+    --card-foreground: #f3f3f3;
+    --popover: #0a0a0a;
+    --popover-foreground: #f3f3f3;
+    --primary: #d14508;
+    --primary-foreground: #ffffff;
+    --cc-accent-text: #ff9b6b;
+    --secondary: #151515;
+    --secondary-foreground: #f3f3f3;
+    --muted: #151515;
+    --muted-foreground: #a8a8a8;
+    --accent: #1b1b1b;
+    --accent-foreground: #f3f3f3;
+    --destructive: #ef4444;
+    --destructive-foreground: #fafafa;
+    --success: #22c55e;
+    --success-foreground: #ffffff;
+    --warning: #f59e0b;
+    --warning-foreground: #141414;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.1);
+    --ring: #d14508;
+    --chart-1: #d14508;
+    --chart-2: #fb923c;
+    --chart-3: #fdba74;
+    --chart-4: #a8a29e;
+    --chart-5: #242424;
+    --radius: 0.85rem;
+    --sidebar-background: #070707;
+    --sidebar-foreground: #e8e8e8;
+    --sidebar-primary: #d14508;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #151515;
+    --sidebar-accent-foreground: #f3f3f3;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-ring: #d14508;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    [role='button']:focus-visible,
+    [tabindex]:not([tabindex='-1']):focus-visible {
+        outline: 2px solid var(--ring);
+        outline-offset: 2px;
+    }
+}
+
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+    }
+
+    aside,
+    nav,
+    header,
+    [data-sidebar],
+    .print\:hidden {
+        display: none !important;
+    }
+}
